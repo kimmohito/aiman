@@ -1,0 +1,491 @@
+*{
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    margin: auto;
+    max-width: 1000px;
+}
+
+
+nav{
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+.nav-img{
+    height: 20px;
+    padding-left: 20px;
+}
+.nav-img img{
+    height: 100%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}  
+.drop-button{
+    text-align: center;
+    display: block;
+    color: #111;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 20px;
+    width: 80px;
+}
+.drop-button span{
+    padding-left: 10px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    background: #fff;
+    text-align: center;
+}
+.dropdown-content span{
+    padding-left: 10px;
+}
+
+.dropdown-content a:hover {
+    color: #00008B;
+    background-color: #eee;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .drop-button {
+    color: #fff;
+    background-color: #00008B;
+}
+
+
+
+/*
+nav{
+    background: #eee;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+nav a{
+    color: #111;
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    position: relative;
+}
+nav a:hover{
+	background: #00008B;
+    color: #fff;
+}
+nav a span{
+    padding-left: 10px;
+}
+
+nav .logo{
+    padding: 0;
+}
+nav .logo:hover{
+    background: #eee;
+}
+nav .logo img{
+    height: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.profile a:hover{
+    background: red;
+    z-index: 10;
+}
+.profile-dropdown a{
+    padding: 0;
+}
+nav a:hover .profile-dropdown a{
+    background: green;
+    display: block;
+}
+
+*/
+
+
+main{
+    padding: 50px;
+    transition: 0.4s;
+}
+main img{
+    width: 100%;
+}
+.black-card{
+    background: #111e;
+    color: #fff;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+.black-card input{
+    width: 100%;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.black-card select{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+.black-card .button-container{
+    display: flex;
+}
+.black-card button{
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    width: 50%;
+    color: #111;
+}
+.black-card button span{
+    padding-left: 10px;
+}
+.black-card button:hover{
+    background: #00008B;
+    color: #fff;
+}
+.black-card .left-btn{
+    border-radius: 5px 0 0 5px;
+}
+.black-card .right-btn{
+    border-radius: 0 5px 5px 0;
+}
+.black-card .active{
+    background: #00008B;
+    color: #fff;
+}
+.black-card .login-btn{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: #fff;
+}
+.margin-top{
+    margin-top: 20px;
+}
+
+.black-card .purchase{
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.white-card{
+    padding: 20px;
+    background: #fffe;
+    border-radius: 5px;
+}
+.white-card .button{
+    text-align: right;
+}
+.white-card .cancel{
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #00008B;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.white-card .confirm{
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    background: #00008B;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.white-card .cancel:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.white-card .confirm:hover{
+    opacity: 0.8;
+}
+.white-card .button button{
+    padding: 10px;
+    border: none;
+    background: #00008B;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+.white-card .button button:hover{
+    opacity: 0.8;
+}
+
+.small-card{
+    max-width: 400px;
+    margin: auto;
+}
+
+
+.white-card .purchase{
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+.white-card .purchase:hover{
+    background: #00008B;
+}
+
+
+
+
+
+
+
+
+
+.max{
+    min-height: 556px;
+}
+
+
+.bg-01{
+    background: url('../img/station.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-blue{
+    color: #fff;
+    background-color: #00008B;
+}
+.bg-04{
+    color: #fff;
+    text-shadow: 2px 2px 4px #000000;
+    background: url('../img/info.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-06{
+    background: url('../img/login.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-07{
+    background: url('../img/logout.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-08{
+    background: url('../img/profile.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-09{
+    background: url('../img/ticket.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-10{
+    background: url('../img/register.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-11{
+    background: url('../img/purchase.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+.price-container{
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    color: #111;
+    text-align: center;
+    position: relative;
+}
+.price-container .price{
+    color: #111;
+    font-size: 25px;
+}
+.price-container strike{
+    color: red;
+}
+.price-container strike span{
+    color: #111;
+}
+.price-container .price-after{
+    color: red;
+    font-size: 30px;
+}
+.price-container .discount-general{
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    padding: 5px;
+    background: red;
+    color: #fff;
+    border-radius: 5px;
+}
+.price-container .discount-usertype{
+    position: absolute;
+    top: 50px;
+    right: -10px;
+    padding: 5px;
+    background: green;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.ticket-table{
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+    display: block;
+}
+.ticket-table th{
+    padding: 10px;
+    background: #00008B;
+    color: #fff;
+}
+.ticket-table tr:nth-child(even){
+    background: #eee;
+}
+.ticket-table tr:hover{
+    background: #ccc;
+}
+.ticket-table td{
+    padding: 5px;
+    width: 12.5%;
+    text-align: center;
+}
+
+
+
+/* Route Table */
+.route-table{
+    border-collapse: collapse;
+    display: block;
+    overflow:auto;
+    height:400px;
+    width:100%;
+}
+.route-table, .route-table th, .route-table td{
+    border-collapse: collapse;
+}
+.route-table th{
+	color : #fff;
+	position: sticky;
+	top: 0;
+	background: #00008B;
+	padding: 10px;
+	z-index: 2;
+}
+.route-table td{
+	padding: 10px;
+	width: 100px;
+	text-align: center;
+}
+.route-table tr{
+	background: #fff;
+}
+.route-table .stay{
+	color : #fff;
+	position: sticky;
+	left: 0;
+	z-index: 1;
+	background: #00008B;
+}
+.route-table tr:nth-child(even){
+	background: #eee;
+}
+.route-table tr:hover{
+    background: #ccc;
+}
+
+.profile-table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.profile-table tr{
+    width: 100%;
+}
+.profile-table tr:hover{
+    background: #00008B;
+    color: #fff;
+}
+.profile-table td{
+    padding: 10px;
+    width: 50%;
+}
+
+
+
+footer{
+    padding: 20px;
+    background: #00008B;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .drop-button{
+        width: auto;
+    }
+    .dropdown-content a{
+        width: 35px;
+    }
+	nav a span{
+        display: none;
+    }
+    main{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
