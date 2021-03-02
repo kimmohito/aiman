@@ -5,6 +5,8 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
 
 if(isset($_POST['confirm'])){
 
+    /*
+    ===== Previous Coding =====
     $origin=$_POST['origin'];
     $destination=$_POST['destination'];
     $passenger=$_POST['passenger'];
@@ -12,13 +14,43 @@ if(isset($_POST['confirm'])){
     $user_id=$_SESSION['user_id'];
     $user_type=$_SESSION['user_type'];
 
-    //Date
-    $date=date('Y-m-d H:i:s');
-
-    // Price
     $query="SELECT * FROM routes WHERE route_origin='$origin' AND route_destination='$destination'";
     $result=mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($result);
+    $price=$row['route_price'];
+    ===== ===== ===== ===== =====
+    */
+
+    // Variables with escape string
+    $origin = mysqli_real_escape_string($conn, $_POST['origin']);
+    $destination = mysqli_real_escape_string($conn, $_POST['des$destination']);
+    $passenger = mysqli_real_escape_string($conn, $_POST['passenger']);
+    $trip = mysqli_real_escape_string($conn, $_POST['trip']);
+    $user_id = $_SESSION['user_id'];
+    $user_type = $_SESSION['user_type'];
+
+    //Date
+    $date=date('Y-m-d H:i:s');
+
+    // Template
+    $sql = "SELECT * FROM routes WHERE route_origin=? AND route_destination=?;";
+    // Create a prepared statement
+    $stmt = mysqli_stmt_init($conn);
+    // Prepare the prepared statement
+    if (!mysqli_stmt_prepare($stmt,$sql)){
+        echo "SQL statement failed";
+    } else {
+        // Bind parameters to the placeholder
+        mysqli_stmt_bind_param($stmt, "ss", $origin, $destination);
+        // Run parametesr inside database
+        mysqli_stmt_execute($stmt);
+        // Query a result
+        $result = mysqli_stmt_get_result($stmt);
+    }
+    // Fetch row
+    $row=mysqli_fetch_assoc($result);
+
+    // Declare price
     $price=$row['route_price'];
 
     // Trip

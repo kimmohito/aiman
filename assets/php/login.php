@@ -20,7 +20,7 @@ if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     // Create a template
-    $sql = "SELECT * FROM users WHERE user_name=? OR user_ic=?;";
+    $sql = "SELECT * FROM users WHERE user_name=? OR user_email=? OR user_ic=?;";
     // Create a prepared statement
     $stmt = mysqli_stmt_init($conn);
     // Prepare the prepared statement
@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
         echo "SQL statement failed";
     } else {
         // Bind parameters to the placeholder
-        mysqli_stmt_bind_param($stmt, "ss", $username, $username);
+        mysqli_stmt_bind_param($stmt, "sss", $username, $username, $username);
         // Run parametesr inside database
         mysqli_stmt_execute($stmt);
         // Query a result

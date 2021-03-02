@@ -9,10 +9,10 @@
             <label>Origin</label>
             <select name="origin" required>
                 <?php
-                    $origin=$_GET['origin'];
+                    $origin = mysqli_real_escape_string($conn, $_GET['origin']);
                     echo '<option value="'.$origin.'" selected hidden>'.$origin.'</option>';
-                    $query="SELECT DISTINCT route_origin FROM routes ORDER BY route_origin ASC";
-                    $result=mysqli_query($conn,$query);
+                    $sql = "SELECT DISTINCT route_origin FROM routes ORDER BY route_origin ASC";
+                    $result=mysqli_query($conn,$sql);
                     while($row=mysqli_fetch_assoc($result)){
                         echo '<option>'.$row['route_origin'].'</option>';
                     }
@@ -21,7 +21,7 @@
             <label>Destination</label>
             <select name="destination" required>
                 <?php
-                    $destination=$_GET['destination'];
+                    $destination = mysqli_real_escape_string($conn, $_GET['destination']);
                     echo '<option value="'.$destination.'" selected hidden>'.$destination.'</option>';
                     $query="SELECT DISTINCT route_destination FROM routes ORDER BY route_destination ASC";
                     $result=mysqli_query($conn,$query);
@@ -33,7 +33,7 @@
             <label>Passenger</label>
             <select name="passenger" required>
                 <?php
-                    $passenger=$_GET['passenger'];
+                    $passenger = mysqli_real_escape_string($conn, $_GET['passenger']);
                     echo '<option value="'.$passenger.'" selected hidden>'.$passenger.'</option>';
                     $count=1;
                     while($count<=10){
@@ -65,10 +65,25 @@
         // If trip button is pressed
         if(isset($_GET['trip'])){
             echo '<form class="black-card margin-top" action="purchase.php" method="post">';
-                // Get Price
-                $query = "SELECT * FROM routes WHERE route_origin='$origin' AND route_destination='$destination'";
-                $result = mysqli_query($conn,$query);
+
+                //Create a template
+                $sql = "SELECT * FROM routes WHERE route_origin=? AND route_destination=?;";
+                // Create a prepared statement
+                $stmt = mysqli_stmt_init($conn);
+                // Prepare the prepared statement
+                if (!mysqli_stmt_prepare($stmt,$sql)){
+                    echo "SQL statement failed";
+                } else {
+                    // Bind parameters to the placeholder
+                    mysqli_stmt_bind_param($stmt, "ss", $origin, $destination);
+                    // Run parametesr inside database
+                    mysqli_stmt_execute($stmt);
+                    // Query a result
+                    $result = mysqli_stmt_get_result($stmt);
+                }
+                // Fetch array without index
                 $row = mysqli_fetch_assoc($result);
+                // Price
                 $price = $row['route_price'];
                 // Trip
                 $trip=$_GET['trip'];
